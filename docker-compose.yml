@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  server:
+    build: ./docker
+    image: myubuntu:flowtype
+    volumes:
+      - '$PWD:/app'
+    ports:
+      - '8000:8000'
+    tty: true
