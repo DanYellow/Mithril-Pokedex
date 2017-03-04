@@ -10,4 +10,4 @@ WORKDIR /app
 
 CMD npm install -g flow-bin
 
-CMD npm install && npm run start
+CMD npm install && npm rebuild node-sass && npm run start

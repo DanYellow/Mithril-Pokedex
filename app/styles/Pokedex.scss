@@ -1,4 +1,7 @@
 .Pokedex {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+
+  margin-top: 15px;
 }

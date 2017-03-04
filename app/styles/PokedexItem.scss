@@ -1,9 +1,162 @@
 .PokedexItem {
   padding: 5px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  border: 2px solid transparent;
+  margin: 3px;
 
   figcaption {
-    font-size: 12px;
+    font-size: 14px;
     font-family: 'Helvetica Neue', Helvetica, Arial, serif;
     text-align: center;
   }
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.5);
+      will-change: scale;
+      transition: transform .5s;
+    }
+  }
 }
+
+// .PokedexItem {
+//   &.fire {
+//     border-left-color: #ff5d00;
+//     border-top-color: #ff5d00;
+//   }
+//   &.fire2 {
+//     border-right-color: #ff5d00;
+//     border-bottom-color: #ff5d00;
+//   }
+
+//   &.water {
+//     border-left-color: #7db9e8;
+//     border-top-color: #7db9e8;
+//   }
+//   &.water2 {
+//     border-right-color: #7db9e8;
+//     border-bottom-color: #7db9e8;
+//   }
+// }
+
+// .PokedexItem {
+//   &.fire {
+//     background: linear-gradient(to bottom, #ff1a00 0%, #ff5d00 100%);
+
+//     &-border {
+//       border-color: #ff5d00;
+//     }
+//   }
+//   &.water {
+//     background: linear-gradient(to bottom, #1e5799 0%, #7db9e8 100%);
+
+//     &-border {
+//       border-color: #7db9e8;
+//     }
+//   }
+//   &.grass {
+//     background: linear-gradient(to bottom, #52b152 0%, #005700 98%);
+
+//     &-border {
+//       border-color: #005700;
+//     }
+//   }
+//   &.poison {
+//     background: linear-gradient(to bottom, #ad1283 0%, #840e65 100%);
+
+//     &-border {
+//       border-color: #840e65;
+//     }
+//   }
+//   &.fly {
+//     background: linear-gradient(to bottom, #ebe9f9 0%, #c1bfea 100%);
+
+//     &-border {
+//       border-color: #c1bfea;
+//     }
+//   }
+//   &.electric {
+//     background: linear-gradient(to bottom, #fceabb 0%, #f8b500 100%);
+
+//     &-border {
+//       border-color: #f8b500;
+//     }
+//   }
+//   &.flying {
+//     background: linear-gradient(to bottom, #d5ebfb 0%, #89c3eb 100%);
+
+//     &-border {
+//       border-color: #89c3eb;
+//     }
+//   }
+//   &.bug {
+//     background: linear-gradient(to bottom, #cdeb8e 0%, #a5c956 100%);
+
+//     &-border {
+//       border-color: #a5c956;
+//     }
+//   }
+//   &.ground {
+//     background: linear-gradient(to bottom, #f3e2c7 0%, #b68d4c 100%);
+
+//     &-border {
+//       border-color: #b68d4c;
+//     }
+//   }
+//   &.fairy {
+//     background: linear-gradient(to bottom, #fcecfc 0%, #ff7cd8 100%);
+
+//     &-border {
+//       border-color: #ff7cd8;
+//     }
+//   }
+//   &.dark {
+//     background: linear-gradient(to bottom, #131313 0%, #4c4c4c 100%);
+
+//     &-border {
+//       border-color: #131313;
+//     }
+//   }
+//   &.rock {
+//     background: linear-gradient(to bottom, #f0b7a1 0%, #8c3310 100%);
+
+//     &-border {
+//       border-color: #8c3310;
+//     }
+//   }
+//   &.steel {
+//     background: linear-gradient(to bottom, #c9dae5 0%, #b5c6d0 100%);
+
+//     &-border {
+//       border-color: #b5c6d0;
+//     }
+//   }
+//   &.ice {
+//     background: linear-gradient(to bottom, #9ee8fa 0%, #d6f9ff 100%);
+
+//     &-border {
+//       border-color: #d6f9ff;
+//     }
+//   }
+//   &.fighting {
+//     background: linear-gradient(to bottom, #f6e6b4 0%, #ed9017 100%);
+
+//     &-border {
+//       border-color: #ed9017;
+//     }
+//   }
+//   &.normal {
+//     background: linear-gradient(to bottom, #ffffff 0%, #f6f6f6 100%);
+
+//     &-border {
+//       border-color: #f6f6f6;
+//     }
+//   }
+// }

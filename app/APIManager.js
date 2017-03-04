@@ -8,9 +8,14 @@ export default class APIManager {
    * Retrives all Pokemon
    * @return {Promise<Object[]>} [description]
    */
-  static getPokemon(): Promise<Object[]> {
+   /**
+    * Retrives all Pokemon
+    * @param  {Number} max pokemon
+    * @return {Promise<Object[]>} [description]
+    */
+  static getPokemon(max: number = 5): Promise<Object[]> {
     let promises = []
-    for (let id = 1; id < 2; id++) {
+    for (let id = 1; id <= max; id++) {
       promises.push(
         m.request({
           url: `${APIManager.baseURL}/pokemon/${id}/`,
