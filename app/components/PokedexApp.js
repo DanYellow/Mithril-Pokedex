@@ -1,47 +1,42 @@
+/* @flow */
+
 import m from 'mithril'
 
 import SearchBar from './SearchBar'
-
+import Pokedex from './Pokedex'
 import APIManager from '../APIManager'
 
 const PokedexApp = {
-  oninit: function(vnode) {
-    console.log("Pokedex loaded")
+  oninit(vnode: Object) {
+    console.log("Pokedex initialized")
     
-    this.pokemon = '{}'
-    this.isLoading = false;
+    this.pokemonList = []
+    this.isLoading = true;
   },
 
-  formSubmitted(value) {
-    this.isLoading = true;
-
-    // APIManager.getPokemonForId(1).then((pkmnDatas) => {
-    //   console.log("pkmnDatas", pkmnDatas)
-    //   this.isLoading = false
-    // }).catch((error) => {
-    //   this.pokemon = "error"
-    //   // console.log(error, this.pokemon)
-    //   this.isLoading = false
-    //   m.redraw() // Set state
-    // })
-
-    APIManager.foo().then((pkmnDatas) => {
-      console.log("pkmnDatas 2", pkmnDatas)
-
-      this.pokemon = "error"
+  oncreate(vnode: Object) {
+    APIManager.getPokemon().then((pkmnDatas) => {
+      this.pokemonList = pkmnDatas
+      this.isLoading = false
+      m.redraw()
+    }).catch((error) => {
+      console.error('error', error)
+      this.isLoading = false;
     })
   },
 
-  view (vnode) {
-    console.log('gregerger')
+  formSubmitted(value: string) {
+    
+  },
+
+  view(vnode: Object) {
     return (
       <div>
-        <SearchBar foo={this.pokemon} submitCallback={(e) => this.formSubmitted()}/>
+        <SearchBar submitCallback={(e) => this.formSubmitted()}/>
+        <Pokedex datas={this.pokemonList} />
       </div>
     )
   }
 }
-
-
 
 export default PokedexApp

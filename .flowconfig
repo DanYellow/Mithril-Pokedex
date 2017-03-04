@@ -2,8 +2,10 @@
 ./node_modules/*
 
 [include]
+.*/app/*.js
 
 [libs]
 
 [options]
-emoji=true
+unsafe.enable_getters_and_setters=true
+module.file_ext=.scss

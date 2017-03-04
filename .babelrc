@@ -4,6 +4,7 @@
       ["transform-react-jsx", {
           "pragma": "m"
       }],
-      "transform-flow-comments"
+      "transform-flow-comments",
+      ["transform-class-properties"]
   ]
 }
