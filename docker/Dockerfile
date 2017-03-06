@@ -1,13 +1,25 @@
-# If not exist docker will try to download it
 FROM myubuntu:flowenv
 
-RUN apt-get update && apt-get install -y nodejs npm ocaml libelf-dev
+RUN apt-get update \
+    && apt-get install -y \
+        nodejs \
+        npm \
+        ocaml \
+        libelf-dev
 
-RUN ln -s --force /usr/bin/nodejs /usr/local/bin/node && ln -s --force /usr/bin/npm /usr/local/bin/npm
-
+RUN ln -s --force /usr/bin/nodejs /usr/local/bin/node \
+    && ln -s --force /usr/bin/npm /usr/local/bin/npm
 
 WORKDIR /app
 
-CMD npm install -g flow-bin
+# COPY /docker /app/
 
-CMD npm install && npm rebuild node-sass && npm run start
+RUN mv /usr/local/lib/node_modules/flow-bin \
+      /usr/local/lib/node_modules/.flow-bin.DELETE
+
+RUN npm install -g flow-bin \
+    && npm install \
+    && npm rebuild node-sass
+# RUN flow 
+
+CMD npm run start
