@@ -67,4 +67,10 @@ export default class PkmnUtils {
     }
     return color;
   }
+
+  static filterPokemon(value, list) {
+    return _.filter(list, (pkmn) => {
+        return pkmn.name.startsWith(value.toLowerCase())
+      })
+  }
 }

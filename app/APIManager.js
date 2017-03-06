@@ -3,17 +3,14 @@
 import m from 'mithril'
 
 export default class APIManager {
-
-  /**
-   * Retrives all Pokemon
-   * @return {Promise<Object[]>} [description]
-   */
    /**
     * Retrives all Pokemon
     * @param  {Number} max pokemon
     * @return {Promise<Object[]>} [description]
     */
   static getPokemon(max: number = 5): Promise<Object[]> {
+    if (max > 721) { max =  721; }
+    console.time('pokemon fetched')
     let promises = []
     for (let id = 1; id <= max; id++) {
       promises.push(
@@ -26,7 +23,8 @@ export default class APIManager {
       )
     }
 
-    return Promise.all(promises).then(values => { 
+    return Promise.all(promises).then(values => {
+      console.timeEnd('pokemon fetched')
       return values
     });
   }
@@ -40,7 +38,7 @@ export default class APIManager {
     if (isNaN(id) || id == 0) { return Promise.reject('Not an id') }
 
     return m.request({
-      url: `${APIManager.baseURL}/pokemon/25/`
+      url: `${APIManager.baseURL}/pokemon/${id}/`
     }).then(function(response) {
       return response
     })

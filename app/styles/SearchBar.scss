@@ -1,0 +1,15 @@
+.SearchBar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin-top: 15px;
+  
+  input[type="search"] {
+    height: 40px;
+    flex: 1;
+    font-size: 1.125rem;
+    padding-left: 5px;
+  }
+}

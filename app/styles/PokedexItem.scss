@@ -7,21 +7,24 @@
   border: 2px solid transparent;
   margin: 3px;
 
+  img {
+    transition: transform .5s;
+    will-change: scale;
+  }
+
   figcaption {
-    font-size: 14px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+    font-size: 0.875rem;
     text-align: center;
   }
 
   a {
     text-decoration: none;
+    color: black;
   }
 
   &:hover {
     img {
       transform: scale(1.5);
-      will-change: scale;
-      transition: transform .5s;
     }
   }
 }

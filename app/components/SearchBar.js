@@ -4,6 +4,8 @@ import FormData from 'form-data'
 import wordings from '../wordings'
 import Utils from '../utils'
 
+import './../styles/SearchBar.scss'
+
 const SearchBar = {
   oninit(vnode: Object) {
     this.vnodeRef = vnode
@@ -19,10 +21,10 @@ const SearchBar = {
 
   view (vnode: Object) {
     return (
-      <form onsubmit={(e) => this.onSubmit(e)}>
-        <input type="search" name="search" 
-               value={this.userSubmission} 
-               placeholder={wordings.search_bar.input_placeholder} 
+      <form onsubmit={ (e) => this.onSubmit(e) } class='SearchBar'>
+        <input type='search' name='search'
+               value={ this.userSubmission }
+               placeholder={ wordings.search_bar.input_placeholder }
                />
       </form>
     )

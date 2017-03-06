@@ -28,7 +28,7 @@ const PokedexItem = {
     return (
       <article class={ `PokedexItem ${classNames(typesLinearized)}` }
                style={ Object.assign({}, ...borderColors) }>
-        <a href="#">
+        <a href="#" style={ null }>
           <figure>
             <img src={data.sprites.front_default} width={ 100 } />
             <figcaption>{v.capitalize(name)}</figcaption>
