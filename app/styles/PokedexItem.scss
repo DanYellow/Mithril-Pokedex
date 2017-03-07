@@ -20,6 +20,10 @@
   a {
     text-decoration: none;
     color: black;
+
+    &:focus {
+      opacity: .7;
+    }
   }
 
   &:hover {

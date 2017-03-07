@@ -6,7 +6,7 @@ import _ from 'lodash'
 import SearchBar from './SearchBar'
 import Pokedex from './Pokedex'
 import APIManager from '../APIManager'
-import PkmnUtils from '../pkmnutils'
+import PkmnUtils from '../PkmnUtils'
 
 const PokedexApp = {
   maxDexID: 721,
@@ -22,7 +22,7 @@ const PokedexApp = {
   },
 
   oncreate(vnode: Object) {
-    const maxDexID = 3
+    const maxDexID = 30
     APIManager.getPokemon(maxDexID).then((pkmnDatas) => {
       this.pokemonList = pkmnDatas
       this.pokemonCache = pkmnDatas
@@ -48,8 +48,11 @@ const PokedexApp = {
   },
 
   view(vnode: Object) {
+    console.log(this.formSubmittedDebounce.bind(this))
+    console.log(() => this.formSubmittedDebounce)
     return (
       <div>
+        {/* <SearchBar submitCallback={ () => this.formSubmittedDebounce }/>*/}
         <SearchBar submitCallback={ this.formSubmittedDebounce.bind(this) }/>
         { this.pokemonList.length > 0 && <Pokedex datas={this.pokemonList} /> }
         { (this.pokemonList.length === 0 && this.isLoading) && <p>Chargement</p> }

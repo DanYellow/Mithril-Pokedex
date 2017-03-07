@@ -6,8 +6,9 @@
   "scripts": {
     "docker": "docker-compose up --build",
     "start": "concurrently --kill-others \"npm run server\" \"npm run webpack_dev\"",
+    "start_2": "concurrently --kill-others \"npm run server\" \"npm run webpack_dev\" \"npm run flow\"",
     "server": "http-server ./ -p 8000",
-    "flow": "flow check",
+    "flow": "flow",
     "webpack_dev": "./node_modules/.bin/webpack --config webpack.config.dev.js --watch -p",
     "test": "ospec"
   },
