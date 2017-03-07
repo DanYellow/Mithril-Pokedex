@@ -5,6 +5,8 @@ import _ from 'lodash'
 
 import SearchBar from './SearchBar'
 import Pokedex from './Pokedex'
+import Loader from './Loader'
+
 import APIManager from '../APIManager'
 import PkmnUtils from '../PkmnUtils'
 
@@ -19,6 +21,8 @@ const PokedexApp = {
 
     this.isLoading = true
     this.formSubmittedDebounce = _.debounce(this.formSubmitted, 600, true)
+
+    this.loadingText = "Chargement";
   },
 
   oncreate(vnode: Object) {
@@ -32,7 +36,7 @@ const PokedexApp = {
       m.redraw()
     }).catch((error) => {
       console.error('error', error)
-      this.isLoading = false
+      this.isLoading = false 
     })
   },
 
@@ -48,14 +52,11 @@ const PokedexApp = {
   },
 
   view(vnode: Object) {
-    console.log(this.formSubmittedDebounce.bind(this))
-    console.log(() => this.formSubmittedDebounce)
     return (
       <div>
-        {/* <SearchBar submitCallback={ () => this.formSubmittedDebounce }/>*/}
         <SearchBar submitCallback={ this.formSubmittedDebounce.bind(this) }/>
         { this.pokemonList.length > 0 && <Pokedex datas={this.pokemonList} /> }
-        { (this.pokemonList.length === 0 && this.isLoading) && <p>Chargement</p> }
+        { (this.pokemonList.length === 0 && this.isLoading) && <Loader /> }
 
         { (this.pokemonList.length === 0 && !this.isLoading) && <p>Aucun résultat</p> }
       </div>

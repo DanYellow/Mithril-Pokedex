@@ -70,7 +70,7 @@ export default class PkmnUtils {
 
   static filterPokemon(value, list) {
     return _.filter(list, (pkmn) => {
-        return pkmn.name.startsWith(value.toLowerCase())
-      })
+      return pkmn.name.startsWith(value.toLowerCase())
+    })
   }
 }
