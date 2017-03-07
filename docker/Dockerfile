@@ -12,10 +12,13 @@ RUN ln -s --force /usr/bin/nodejs /usr/local/bin/node \
 
 WORKDIR /app
 
-# COPY /docker /app/
+COPY . /app/
+
+RUN rm -r /usr/local/lib/node_modules/.flow-bin.DELETE
 
 RUN mv /usr/local/lib/node_modules/flow-bin \
       /usr/local/lib/node_modules/.flow-bin.DELETE
+
 
 RUN npm install -g flow-bin \
     && npm install \
