@@ -26,17 +26,25 @@ const PokedexApp = {
   },
 
   oncreate(vnode: Object) {
-    const maxDexID = 30
-    APIManager.getPokemon(maxDexID).then((pkmnDatas) => {
-      this.pokemonList = pkmnDatas
-      this.pokemonCache = pkmnDatas
-      window.debug.pokemon = pkmnDatas
+    const maxDexID = 40
+ 
+    let allPromises = new Promise((resolve) => {
+      resolve(true)
+    })
 
+    for (let id = 1; id <= maxDexID; id++) {
+      allPromises = allPromises.then(() => {
+        return APIManager.getPokemonForId(id).then((pkmnDatas) => {
+          this.pokemonList.push(pkmnDatas)
+          this.pokemonCache.push(pkmnDatas)
+          
+          window.debug.pokemon = pkmnDatas
+        })
+      })
+    }
+    allPromises.then(() => {
       this.isLoading = false
-      m.redraw()
-    }).catch((error) => {
-      console.error('error', error)
-      this.isLoading = false 
+      // this.pokemonCache = this.pokemonList
     })
   },
 
@@ -56,7 +64,7 @@ const PokedexApp = {
       <div>
         <SearchBar submitCallback={ this.formSubmittedDebounce.bind(this) }/>
         { this.pokemonList.length > 0 && <Pokedex datas={this.pokemonList} /> }
-        { (this.pokemonList.length === 0 && this.isLoading) && <Loader /> }
+        { this.isLoading && <Loader /> }
 
         { (this.pokemonList.length === 0 && !this.isLoading) && <p>Aucun résultat</p> }
       </div>

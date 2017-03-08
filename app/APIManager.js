@@ -8,7 +8,7 @@ export default class APIManager {
     * @param  {Number} max pokemon
     * @return {Promise<Object[]>} [description]
     */
-  static getPokemon(max: number = 5): Promise<Object[]> {
+  static getAllPokemon(max: number = 5): Promise<Object[]> {
     if (max > 721) { max =  721; }
     console.time('pokemon fetched')
     let promises = []

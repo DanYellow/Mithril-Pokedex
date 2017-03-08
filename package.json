@@ -9,7 +9,7 @@
     "start_2": "concurrently --kill-others \"npm run server\" \"flow\" \"npm run webpack_dev\" ",
     "server": "http-server ./ -p 8000",
     "flow": "flow",
-    "webpack_dev": "./node_modules/.bin/webpack --config webpack.config.dev.js --watch -p",
+    "webpack_dev": "./node_modules/.bin/webpack --config webpack.config.dev.js --debug --watch ",
     "test": "ospec"
   },
   "keywords": [],

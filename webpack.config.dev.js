@@ -9,7 +9,7 @@ module.exports = {
     filename: 'public/index.js',
     publicPath: '/',
     pathinfo: true,
-    path: path.resolve(__dirname, '/')
+    // path: path.resolve(__dirname, '/')
   },
   module: {
     rules: [{
@@ -42,6 +42,6 @@ module.exports = {
   },
   plugins: [
     new FlowBabelWebpackPlugin(),
-    // new CleanWebpackPlugin(['public']),
+    new CleanWebpackPlugin(['public']),
   ],
 }
