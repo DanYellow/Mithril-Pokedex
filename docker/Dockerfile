@@ -30,6 +30,7 @@ RUN rm -rf /app/node_modules/.babel-cli.DELETE
 # RUN mv -n /app/node_modules/babel-cli \
   #    /app/node_modules/.babel-cli.DELETE
 
+RUN npm install -g rimraf
 RUN npm run clean
 RUN npm rebuild node-sass
 RUN npm install
