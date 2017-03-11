@@ -6,10 +6,9 @@
   "scripts": {
     "docker": "docker-compose up --build",
     "docker_init": "docker-compose build",
-    "start": "concurrently --prefix=command \"npm run server\" \"npm run webpack_dev\"",
+    "start": "concurrently \"npm run server\" \"npm run webpack_dev\"",
     "server": "http-server ./ -p 8000",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "clean": "rimraf node_modules && npm cache clean && echo 'You have to install node_modules'",
     "webpack_dev": "./node_modules/.bin/webpack --config webpack.config.dev.js --debug --watch ",
     "test": "ospec"
   },
@@ -33,7 +32,6 @@
     "http-server": "^0.9",
     "node-notifier": "^5.0.2",
     "node-sass": "^4.5.0",
-    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.2",
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.8",

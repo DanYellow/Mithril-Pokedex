@@ -2,11 +2,10 @@ FROM ubuntu:latest
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        curl \
-        apt-utils
+        apt-utils curl
 
 RUN cd ~
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 
 
 RUN apt-get update \
@@ -27,13 +26,11 @@ COPY . /app/
 
 RUN rm -rf /app/node_modules/.babel-cli.DELETE
 
-# RUN mv -n /app/node_modules/babel-cli \
-  #    /app/node_modules/.babel-cli.DELETE
-
-RUN npm install -g rimraf
-RUN npm run clean
+# RUN rm -rf node_modules
+RUN npm cache clean
+RUN npm install -g concurrently webpack http-server
 RUN npm rebuild node-sass
-RUN npm install
+# RUN npm install
 
 
 CMD npm run start

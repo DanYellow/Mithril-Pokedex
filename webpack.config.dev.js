@@ -1,6 +1,5 @@
 var path = require('path')
 
-var notifier = require('node-notifier')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
