@@ -7,11 +7,11 @@ import PokedexItem from './PokedexItem'
 import './../styles/Pokedex.scss'
 
 const Pokedex = {
-  oninit(vnode: Object) {
+  oninit(vnode) {
     this.vnodeRef = vnode
   },
 
-  view (vnode: Object) {
+  view (vnode) {
     const pokemonList = vnode.attrs.datas
 
     return (

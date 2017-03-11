@@ -8,4 +8,5 @@
 
 [options]
 unsafe.enable_getters_and_setters=true
-module.file_ext=.scss
+module.name_mapper='.*\(.css\)' -> 'empty/object'
+module.name_mapper='.*\(.scss\)' -> 'empty/object'

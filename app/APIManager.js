@@ -1,5 +1,3 @@
-/* @flow */
-
 import m from 'mithril'
 
 export default class APIManager {
@@ -8,7 +6,7 @@ export default class APIManager {
     * @param  {Number} max pokemon
     * @return {Promise<Object[]>} [description]
     */
-  static getAllPokemon(max: number = 5): Promise<Object[]> {
+  static getAllPokemon(max = 5) {
     if (max > 721) { max =  721; }
     console.time('pokemon fetched')
     let promises = []
@@ -34,7 +32,7 @@ export default class APIManager {
    * @param  {Number} id Id of Pokemon
    * @return {Promise}    Result
    */
-  static getPokemonForId(id: number): Promise<Object|string> {
+  static getPokemonForId(id) {
     if (isNaN(id) || id == 0) { return Promise.reject('Not an id') }
 
     return m.request({
@@ -48,7 +46,7 @@ export default class APIManager {
    * Retrieves base url
    * @return {String} Base url
    */
-  static get baseURL(): string {
+  static get baseURL() {
     return 'http://pokeapi.co/api/v2';
   }
   // static const baseURL: string = 'http://pokeapi.co/api/v2'

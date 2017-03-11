@@ -1,11 +1,22 @@
-FROM myubuntu:flowenv
+FROM ubuntu:latest
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        curl \
+        apt-utils
+
+RUN cd ~
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
+
 
 RUN apt-get update \
     && apt-get install -y \
         nodejs \
-        npm \
         ocaml \
-        libelf-dev
+        libelf-dev \
+        build-essential
+
+RUN node -v
 
 RUN ln -s --force /usr/bin/nodejs /usr/local/bin/node \
     && ln -s --force /usr/bin/npm /usr/local/bin/npm
@@ -14,15 +25,14 @@ WORKDIR /app
 
 COPY . /app/
 
-RUN rm -r /usr/local/lib/node_modules/.flow-bin.DELETE
+RUN rm -rf /app/node_modules/.babel-cli.DELETE
 
-RUN mv /usr/local/lib/node_modules/flow-bin \
-      /usr/local/lib/node_modules/.flow-bin.DELETE
+# RUN mv -n /app/node_modules/babel-cli \
+  #    /app/node_modules/.babel-cli.DELETE
 
+RUN npm run clean
+RUN npm rebuild node-sass
+RUN npm install
 
-RUN npm install -g flow-bin \
-    && npm install \
-    && npm rebuild node-sass
-# RUN flow 
 
 CMD npm run start

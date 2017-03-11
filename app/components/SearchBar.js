@@ -6,20 +6,22 @@ import Utils from '../utils'
 
 import './../styles/SearchBar.scss'
 
+
+
 const SearchBar = {
-  oninit(vnode: Object) {
+  oninit(vnode) {
     this.vnodeRef = vnode
     this.userSubmission = null
   },
 
-  onSubmit(e: Object) {
+  onSubmit(e) {
     e.preventDefault()
 
     this.userSubmission = Utils.getFormData(e.target).search
     this.vnodeRef.attrs.submitCallback(this.userSubmission)
   },
 
-  view (vnode: Object) {
+  view (vnode) {
     return (
       <form onsubmit={ (e) => this.onSubmit(e) } class='SearchBar'>
         <input type='search' name='search'
@@ -30,7 +32,5 @@ const SearchBar = {
     )
   }
 }
-
-
 
 export default SearchBar

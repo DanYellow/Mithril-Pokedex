@@ -5,7 +5,7 @@ services:
     build: 
       context: ./
       dockerfile: ./docker/Dockerfile
-    image: myubuntu:flowenv
+    image: flowenv:1.0
     volumes:
       - '$PWD:/app'
     ports:

@@ -1,7 +1,6 @@
-/* @flow */
-
 import m from 'mithril'
 import _ from 'lodash'
+
 
 import SearchBar from './SearchBar'
 import Pokedex from './Pokedex'
@@ -13,7 +12,7 @@ import PkmnUtils from '../PkmnUtils'
 const PokedexApp = {
   maxDexID: 721,
 
-  oninit(vnode: Object) {
+  oninit(vnode) {
     console.log("Pokedex initialized")
 
     this.pokemonList = []
@@ -22,12 +21,10 @@ const PokedexApp = {
     this.isLoading = true
     this.formSubmittedDebounce = _.debounce(this.formSubmitted, 600, true)
 
-    this.loadingText = "Chargement";
+    this.loadingText = 'Chargement';
   },
 
-  oncreate(vnode: Object) {
-    const maxDexID = 40
- 
+  fetchPokemon(maxDexID) {
     let allPromises = new Promise((resolve) => {
       resolve(true)
     })
@@ -44,11 +41,14 @@ const PokedexApp = {
     }
     allPromises.then(() => {
       this.isLoading = false
-      // this.pokemonCache = this.pokemonList
     })
   },
 
-  formSubmitted(value: string) {
+  oncreate(vnode) {
+    this.fetchPokemon(25);
+  },
+
+  formSubmitted(value) {
     this.isLoading = true
     if (value) {
       this.pokemonList = PkmnUtils.filterPokemon(value, this.pokemonCache)
@@ -56,13 +56,13 @@ const PokedexApp = {
       this.pokemonList = this.pokemonCache
     }
     this.isLoading = false
-    m.redraw()
+    // m.redraw()
   },
 
-  view(vnode: Object) {
+  view(vnode) {
     return (
       <div>
-        <SearchBar submitCallback={ this.formSubmittedDebounce.bind(this) }/>
+                <SearchBar submitCallback={ this.formSubmittedDebounce.bind(this) }/>
         { this.pokemonList.length > 0 && <Pokedex datas={this.pokemonList} /> }
         { this.isLoading && <Loader /> }
 

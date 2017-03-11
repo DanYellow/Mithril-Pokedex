@@ -1,6 +1,6 @@
 var path = require('path')
 
-var FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin')
+var notifier = require('node-notifier')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
@@ -41,7 +41,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new FlowBabelWebpackPlugin(),
     new CleanWebpackPlugin(['public']),
   ],
 }

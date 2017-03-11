@@ -1,16 +1,17 @@
 import m from 'mithril'
 
-
 import './../styles/Loader.scss'
 
 import loader from '../images/pika-loader-mini.gif'
 
+
+
 const Loader = {
-  oninit(vnode: Object) {
+  oninit(vnode) {
     this.vnodeRef = vnode
   },
 
-  view (vnode: Object) {
+  view(vnode) {
     return (
       <figure class='Loader'>
         <img src={loader} />
@@ -19,7 +20,5 @@ const Loader = {
     )
   }
 }
-
-
 
 export default Loader
