@@ -1,3 +1,5 @@
+// @flow
+
 import m from 'mithril'
 import uuidV4 from 'uuid/v4'
 
@@ -7,11 +9,11 @@ import PokedexItem from './PokedexItem'
 import './../styles/Pokedex.scss'
 
 const Pokedex = {
-  oninit(vnode) {
+  oninit(vnode:Object) {
     this.vnodeRef = vnode
   },
 
-  view (vnode) {
+  view (vnode:Object) {
     const pokemonList = vnode.attrs.datas
 
     return (

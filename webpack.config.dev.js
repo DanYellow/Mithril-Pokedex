@@ -2,6 +2,7 @@ var path = require('path')
 
 var notifier = require('node-notifier')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
+var FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin')
 
 module.exports = {
   entry: './app/index.js',
@@ -42,5 +43,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['public']),
+    new FlowBabelWebpackPlugin(),
   ],
 }

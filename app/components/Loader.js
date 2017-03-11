@@ -1,17 +1,17 @@
+// @flow
+
 import m from 'mithril'
 
 import './../styles/Loader.scss'
 
 import loader from '../images/pika-loader-mini.gif'
 
-
-
 const Loader = {
-  oninit(vnode) {
+  oninit(vnode: Object) {
     this.vnodeRef = vnode
   },
 
-  view(vnode) {
+  view(vnode: Object) {
     return (
       <figure class='Loader'>
         <img src={loader} />

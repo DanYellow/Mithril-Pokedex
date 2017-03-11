@@ -29,6 +29,7 @@
     "concurrently": "^3.4.0",
     "css-loader": "^0.26.2",
     "file-loader": "^0.10.1",
+    "flow-babel-webpack-plugin": "^1.0.1",
     "flow-bin": "^0.40.0",
     "http-server": "^0.9",
     "node-notifier": "^5.0.2",
