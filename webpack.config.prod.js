@@ -3,8 +3,8 @@ var CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
   entry: './app/index.js',
   output: {
-    filename: 'prod/index.js',
-    publicPath: '/',
+    filename: 'public/index.js',
+    publicPath: '',
     pathinfo: true,
   },
   module: {
@@ -29,7 +29,7 @@ module.exports = {
       use: [{
         loader: 'file-loader',
         query: {
-          name: 'prod/images/[name].[hash:8].[ext]'
+          name: 'public/images/[name].[hash:8].[ext]'
         },
       }],
         
@@ -37,6 +37,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['prod']),
+    new CleanWebpackPlugin(['public']),
   ],
 }
