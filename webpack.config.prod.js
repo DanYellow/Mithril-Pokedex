@@ -1,16 +1,11 @@
-var path = require('path')
-
-var notifier = require('node-notifier')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
-var FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin')
 
 module.exports = {
   entry: './app/index.js',
   output: {
-    filename: 'public/index.js',
+    filename: 'prod/index.js',
     publicPath: '/',
     pathinfo: true,
-    // path: path.resolve(__dirname, '/')
   },
   module: {
     rules: [{
@@ -34,7 +29,7 @@ module.exports = {
       use: [{
         loader: 'file-loader',
         query: {
-          name: 'public/images/[name].[hash:8].[ext]'
+          name: 'prod/images/[name].[hash:8].[ext]'
         },
       }],
         
@@ -42,6 +37,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['public']),
+    new CleanWebpackPlugin(['prod']),
   ],
 }

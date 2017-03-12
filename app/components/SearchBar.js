@@ -21,10 +21,15 @@ const SearchBar = {
     this.vnodeRef.attrs.submitCallback(this.userSubmission)
   },
 
+  onInput(e) {
+    this.userSubmission = e.target.value
+  },
+
   view (vnode) {
     return (
       <form onsubmit={ (e) => this.onSubmit(e) } class='SearchBar'>
         <input type='search' name='search'
+               oninput={ (e) => this.onInput(e) }
                value={ this.userSubmission }
                placeholder={ wordings.search_bar.input_placeholder }
                />

@@ -1,6 +1,5 @@
 // https://en.wikipedia.org/wiki/Analysis_paralysis
 import m from 'mithril'
-import FormData from 'form-data'
 import v from 'voca'
 import _ from 'lodash'
 import classNames from 'classnames'
@@ -18,7 +17,7 @@ const PokedexItem = {
 
   view(vnode) {
     let { data } = vnode.attrs
-    let { name } = data
+    let { name, id } = data
 
     let typesLinearized = _.reverse(_.map(data.types, 'type.name'))
     const borderColors = this.getBorderStyleForTypes(typesLinearized)
@@ -26,10 +25,10 @@ const PokedexItem = {
     return (
       <article class={ `PokedexItem ${classNames(typesLinearized)}` }
                style={ Object.assign({}, ...borderColors) }>
-        <a href="#">
+        <a href={'/pokemon/' + id} oncreate={m.route.link}>
           <figure>
-            <img src={data.sprites.front_default} width={ 100 } />
-            <figcaption>{v.capitalize(name)}</figcaption>
+            <img src={ data.sprites.front_default } width={ 100 } />
+            <figcaption>{ v.capitalize(name) }</figcaption>
           </figure>
         </a>
       </article>

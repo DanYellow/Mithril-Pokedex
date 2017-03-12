@@ -1,3 +1,5 @@
+// @flow
+
 import m from 'mithril'
 
 export default class APIManager {
@@ -36,9 +38,10 @@ export default class APIManager {
     if (isNaN(id) || id == 0) { return Promise.reject('Not an id') }
 
     return m.request({
-      url: `${APIManager.baseURL}/pokemon/${id}/`
+      url: `${APIManager.baseURL}/pokemon/${id}/`,
+      background: false
     }).then(function(response) {
-      return response
+      return response 
     })
   }
 

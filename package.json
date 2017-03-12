@@ -10,7 +10,8 @@
     "server": "http-server ./ -p 8000",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "clean": "rimraf node_modules && npm cache clean && echo 'You have to install node_modules'",
-    "webpack_dev": "./node_modules/.bin/webpack --config webpack.config.dev.js --debug --watch ",
+    "webpack_dev": "./node_modules/.bin/webpack --config webpack.config.dev.js --debug --watch",
+    "webpack_prod": "./node_modules/.bin/webpack --config webpack.config.prod.js -p",
     "test": "ospec"
   },
   "keywords": [],
