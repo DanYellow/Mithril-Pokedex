@@ -1,22 +1,16 @@
 FROM ubuntu:latest
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        curl \
-        apt-utils
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils \
+        curl
 
-# RUN cd ~
-# RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN cd ~
+RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
 
 
-RUN apt-get update \
-    && apt-get install -y \
-        nodejs \
-        ocaml \
-        libelf-dev \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs \
         build-essential
 
-RUN node -v
 
 RUN ln -s --force /usr/bin/nodejs /usr/local/bin/node \
     && ln -s --force /usr/bin/npm /usr/local/bin/npm
@@ -27,9 +21,13 @@ COPY . /app/
 
 RUN rm -rf ./app/node_modules
 
+
 RUN npm cache clean
-RUN npm install
+RUN npm install --no-optional
 RUN npm rebuild node-sass
+RUN ls
+# RUN npm update --no-optional
 
 
-CMD npm run start
+
+CMD npm run server
