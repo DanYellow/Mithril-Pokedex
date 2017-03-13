@@ -5,8 +5,8 @@ RUN apt-get update \
         curl \
         apt-utils
 
-RUN cd ~
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
+# RUN cd ~
+# RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 
 
 RUN apt-get update \
@@ -25,15 +25,11 @@ WORKDIR /app
 
 COPY . /app/
 
-RUN rm -rf /app/node_modules/.babel-cli.DELETE
+RUN rm -rf ./app/node_modules
 
-# RUN mv -n /app/node_modules/babel-cli \
-  #    /app/node_modules/.babel-cli.DELETE
-
-RUN npm install -g rimraf
-RUN npm run clean
-RUN npm rebuild node-sass
+RUN npm cache clean
 RUN npm install
+RUN npm rebuild node-sass
 
 
 CMD npm run start

@@ -1,4 +1,5 @@
 // @flow
+// @jsx Object
 
 import m from 'mithril'
 import v from 'voca'
@@ -13,15 +14,15 @@ const Popin = {
     this.vnodeRef = vnode
   },
 
-  onremove: function(vnode) {
-    document.body.classList.remove('has-popin')
-    },
-
-  oncreate() {
-    document.body.classList.add('has-popin')
+  onremove: function(vnode: Object) {
+    window.document.body.classList.remove('has-popin')
   },
 
-  onbeforeupdate(vnode, old) {
+  oncreate() {
+    window.document.body.classList.add('has-popin')
+  },
+
+  onbeforeupdate(vnode: Object, old: Object) {
     return false
   },
 
@@ -86,7 +87,7 @@ const PkmnTableTypes = {
     ) 
   },
 
-  _renderTableEffectiveness (datas) {
+  _renderTableEffectiveness (datas:Array<Object>) {
     var styles = {}
 
     var template = [];
@@ -102,12 +103,12 @@ const PkmnTableTypes = {
     for (let coefficient in _.groupBy(datas, 'effetiveness')) {
       template.push(
         <div class='PkmnTableTypesContainer' key={uuidV4()}>
-          <p style={styles.title}>{titles[coefficient]} : </p>
+          <p>{titles[coefficient]} : </p>
 
           <div class='TypesContainer' key={uuidV4()}>
             {_.groupBy(datas, 'effetiveness')[coefficient].map((type, index) => 
               <div key={uuidV4()} style={ {backgroundColor: PkmnUtils.typeColor(type.type)} }>
-                <p style={styles.typeName}>
+                <p>
                   {type.type} | {type.effetiveness}
                 </p>
               </div>
@@ -135,63 +136,62 @@ const GameAppareances = {
     )
   },
 
-    _getCoverGame (name) {
+    _getCoverGame(name) {
     switch(name) {
       case 'red':
-        return require('../images/games_cover/red.png');
+        return require('../images/games_cover/red.png')
       case 'blue':
-        return require('../images/games_cover/blue.png');
+        return require('../images/games_cover/blue.png')
       case 'alpha-sapphire':
-        return require('../images/games_cover/alpha-sapphire.png');
+        return require('../images/games_cover/alpha-sapphire.png')
       case 'black-2':
-        return require('../images/games_cover/black-2.png');
+        return require('../images/games_cover/black-2.png')
       case 'black':
-        return require('../images/games_cover/black.png');
+        return require('../images/games_cover/black.png')
       case 'crystal':
-        return require('../images/games_cover/crystal.png');
+        return require('../images/games_cover/crystal.png')
       case 'diamond':
-        return require('../images/games_cover/diamond.png');
+        return require('../images/games_cover/diamond.png')
       case 'emerald':
-        return require('../images/games_cover/emerald.png');
+        return require('../images/games_cover/emerald.png')
       case 'firered':
-        return require('../images/games_cover/firered.png');
+        return require('../images/games_cover/firered.png')
       case 'gold':
-        return require('../images/games_cover/gold.png');
+        return require('../images/games_cover/gold.png')
       case 'heartgold':
-        return require('../images/games_cover/heartgold.png');
+        return require('../images/games_cover/heartgold.png')
       case 'leafgreen':
-        return require('../images/games_cover/leafgreen.png');
+        return require('../images/games_cover/leafgreen.png')
       case 'moon':
-        return require('../images/games_cover/moon.png');
+        return require('../images/games_cover/moon.png')
       case 'omega-ruby':
-        return require('../images/games_cover/omega-ruby.png');
+        return require('../images/games_cover/omega-ruby.png')
       case 'ruby':
-        return require('../images/games_cover/ruby.png');
+        return require('../images/games_cover/ruby.png')
       case 'pearl':
-        return require('../images/games_cover/pearl.png');
+        return require('../images/games_cover/pearl.png')
       case 'platinum':
-        return require('../images/games_cover/platinum.png');
+        return require('../images/games_cover/platinum.png')
       case 'sapphire':
-        return require('../images/games_cover/sapphire.png');
+        return require('../images/games_cover/sapphire.png')
       case 'silver':
-        return require('../images/games_cover/silver.png');
+        return require('../images/games_cover/silver.png')
       case 'soulsilver':
-        return require('../images/games_cover/soulsilver.png');
+        return require('../images/games_cover/soulsilver.png')
       case 'sun':
-        return require('../images/games_cover/sun.png');
+        return require('../images/games_cover/sun.png')
       case 'white-2':
-        return require('../images/games_cover/white-2.png');
+        return require('../images/games_cover/white-2.png')
       case 'white':
-        return require('../images/games_cover/white.png');
+        return require('../images/games_cover/white.png')
       case 'x':
-        return require('../images/games_cover/x.png');
+        return require('../images/games_cover/x.png')
       case 'y':
-        return require('../images/games_cover/y.png');
+        return require('../images/games_cover/y.png')
       case 'yellow':
-        return require('../images/games_cover/yellow.png');
+        return require('../images/games_cover/yellow.png')
       default:
-        return require('../images/games_cover/yellow.png');
-        break;
+        return require('../images/games_cover/yellow.png')
     }
   }
 }

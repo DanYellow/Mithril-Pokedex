@@ -1,4 +1,5 @@
 // @flow
+// @jsx Object
 
 import m from 'mithril'
 import _ from 'lodash'
@@ -27,33 +28,7 @@ const PokedexApp = {
     this.searchValue = '';
   },
 
-  fetchPokemon(maxDexID) {
-    let allPromises = new Promise((resolve) => {
-      resolve(true)
-    })
-
-    for (let id = 1; id <= maxDexID; id++) {
-      allPromises = allPromises.then(() => {
-        return APIManager.getPokemonForId(id).then((pkmnDatas) => {
-          this.pokemonList.push(pkmnDatas)
-          this.pokemonCache.push(pkmnDatas)
-          
-          window.debug.pokemon = pkmnDatas
-          if (!this.searchValue) {
-            m.redraw()
-          }
-        })
-      })
-    }
-    allPromises.then(() => {
-      this.isLoading = false
-      m.redraw()
-    })
-  },
-
-  oncreate(vnode) {
-    // this.fetchPokemon(50)
-  },
+  oncreate(vnode) {},
 
   loadingEnded(pkmnList) {
     this.isLoading = false

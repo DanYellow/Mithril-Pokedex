@@ -1,4 +1,5 @@
 // @flow
+// @jsx Object
 
 import m from 'mithril'
 import uuidV4 from 'uuid/v4'
@@ -20,7 +21,7 @@ let Pokedex = {
 
   onupdate(vnode:Object) {},
 
-  oncreate(vnode) {
+  oncreate(vnode: Object) {
     this.fetchPokemon(50)
   },
 
@@ -37,7 +38,7 @@ let Pokedex = {
   },
 
 
-  fetchPokemon(maxDexID) {
+  fetchPokemon(maxDexID: number = 15) {
     let allPromises = new Promise((resolve) => {
       resolve(true)
     })

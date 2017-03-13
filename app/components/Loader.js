@@ -1,4 +1,5 @@
 // @flow
+// @jsx Object
 
 import m from 'mithril'
 
